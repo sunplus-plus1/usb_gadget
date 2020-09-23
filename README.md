@@ -3,7 +3,7 @@
 
 >Enable Mass Storage gadget (Ubuntu and Windows is supported)
 2. boot your develop board and connect micro usb to PC
-3. copy mass_storage_class/setup_mass.sh to develop board
+3. copy [setup_mass.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/setup_mass.sh) to develop board
 4. If you want to use device as medium \
 insert sdcard to develop board and it will be /dev/mmcblk1
     ```
@@ -27,25 +27,25 @@ run below command to create vfat image file in your PC
 
 >Enable communication device class gadget
 2. boot your develop board and connect micro usb to PC
-3. copy communication_device_class/setup_ecm.sh to develop board
+3. copy [setup_ecm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/setup_ecm.sh) to develop board
 4. setup Host (untuntu 14, Windows doesn't yet support) network connections\
-2.1 run 'nm-connection-editor' and Press "Add" in network connections\
+4.1 run 'nm-connection-editor' and Press "Add" in network connections\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_main.png)\
 \
-2.2 Choose Enternet\
+4.2 Choose Enternet\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_choose.png)\
 \
-2.3 Set connection name and MAC address\
+4.3 Set connection name and MAC address\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_mac.png)\
 \
-2.4 Set IP\
+4.4 Set IP\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_ip.png)\
 \
-2.4 New network connection (usb0) will create\
+4.5 New network connection (usb0) will create\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_ok.png)
 
