@@ -35,7 +35,7 @@ mkdir g_ecm
 mkdir g1  
 cd g1
 
-echo "512" > bMaxPacketSize0  
+echo "64" > bMaxPacketSize0  
 echo "0x200" > bcdUSB
 echo "0x100" > bcdDevice
 echo "0x03fd" > idVendor
@@ -61,10 +61,12 @@ ln -s functions/ecm.0 configs/c1.1
 #mkdir functions/rndis.rn0 
 #ln -s functions/rndis.rn0/ configs/c1.1/
  
-echo "9c102800.usb" > UDC
-echo d > /sys/devices/platform/soc@B/9c102800.usb/udc_ctrl
+#echo "9c102800.usb" > UDC
+echo d > /sys/devices/platform/soc-B/9c102800.usb/udc_ctrl
 
 #set ip
+ifconfig lo up
 ifconfig usb0 $DEV_IP netmask 255.255.255.0 up
 #arp -s 192.168.10.30 22:aa:8b:ef:7d:c0
+
 
