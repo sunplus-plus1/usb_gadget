@@ -51,9 +51,10 @@ mkdir -p /sys/kernel/config
 mount -t configfs none /sys/kernel/config  
 cd /sys/kernel/config/usb_gadget
 
-# create gadget folder
+# create gadget 1/2 folder
 
 mkdir g1  
+mkdir g2
 
 # setup gadget 1
 
@@ -93,6 +94,41 @@ echo "9c102800.usb" > UDC
 
 # switch UDC0 to device
 switch_udc 0
+
+# setup gadget 2
+
+cd -
+cd g2
+
+echo 64 > bMaxPacketSize0  
+echo 0x200 > bcdUSB
+echo 0x100 > bcdDevice
+
+### VID: NetChip
+echo 0x0525	> idVendor    
+
+### PID: Linux-USB Serial Gadget as CDC-ACM   
+echo 0xa4a7 > idProduct
+
+echo 1 > bDeviceProtocol
+
+mkdir -p configs/c1.1
+mkdir -p configs/c1.1/strings/0x409
+echo "serial" > configs/c1.1/strings/0x409/configuration
+
+mkdir strings/0x409
+echo "" > strings/0x409/serialnumber
+echo "Sunplus" > strings/0x409/manufacturer
+echo "SP7021" > strings/0x409/product
+
+mkdir functions/acm.GS0
+ln -s functions/acm.GS0 configs/c1.1
+
+# bind UDC
+echo "9c103800.usb" > UDC
+
+# switch UDC1 to device
+switch_udc 1
 
 # set ip
 ifconfig lo up

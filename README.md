@@ -7,9 +7,9 @@ cat <<EOT >> gadget_config
 # USB Physical Layer drivers
 #
 CONFIG_USB_GADGET=y
+CONFIG_U_SERIAL_CONSOLE=y
 CONFIG_SUNPLUS_USB_PHY=y
 CONFIG_USB_SUNPLUS_OTG=y
-CONFIG_USB_GADGET=y
 CONFIG_GADGET_USB0=y
 CONFIG_USB_GADGET_VBUS_DRAW=2
 CONFIG_USB_GADGET_STORAGE_NUM_BUFFERS=2
@@ -25,15 +25,19 @@ CONFIG_USB_F_ECM=m
 CONFIG_USB_F_SUBSET=m
 CONFIG_USB_F_RNDIS=m
 CONFIG_USB_F_MASS_STORAGE=m
+CONFIG_USB_F_ACM=m
+CONFIG_USB_F_SERIAL=m
 CONFIG_USB_CONFIGFS=m
 CONFIG_USB_CONFIGFS_NCM=y
 CONFIG_USB_CONFIGFS_ECM=y
 CONFIG_USB_CONFIGFS_RNDIS=y
 CONFIG_USB_CONFIGFS_MASS_STORAGE=y
+CONFIG_USB_U_SERIAL=m
 CONFIG_USB_ZERO=m
 CONFIG_USB_ETH=m
 CONFIG_USB_ETH_RNDIS=y
 CONFIG_USB_G_NCM=m
+CONFIG_USB_G_SERIAL=m
 CONFIG_USB_GADGETFS=m
 CONFIG_USB_MASS_STORAGE=m
 CONFIG_CONFIGFS_FS=m
@@ -56,14 +60,14 @@ cd ../..
 
 ```
 >Enable Mass Storage gadget (Ubuntu and Windows is supported)
-2. boot your develop board and connect micro usb to PC
-3. copy [setup_mass.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/setup_mass.sh) to develop board
-4. If you want to use device as medium \
+1. boot your develop board and connect micro usb to PC
+2. copy [setup_mass.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/setup_mass.sh) to develop board
+3. If you want to use device as medium \
 insert sdcard to develop board and it will be /dev/mmcblk1
     ```
     ./setup_mass.sh /dev/mmcblk1
     ```
-5. If you want to use file as medium: \
+4. If you want to use file as medium: \
 run below command to create vfat image file in your PC
     ```
     dd if=/dev/zero of=fdev count=100 bs=1M
@@ -75,36 +79,41 @@ run below command to create vfat image file in your PC
     ```
     \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/pic/storage_copy.png)
-6. Result\
+5. Result\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/pic/storage_result.png)
 
 >Enable communication device class gadget
-2. boot your develop board and connect micro usb to PC
-3. copy [setup_ecm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/setup_ecm.sh) to develop board
-4. setup Host (untuntu 14, Windows doesn't yet support) network connections\
-4.1 run 'nm-connection-editor' and Press "Add" in network connections\
+1. boot your develop board and connect micro usb to PC
+2. copy [setup_ecm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/setup_ecm.sh) to develop board
+3. setup Host (untuntu 14, Windows doesn't yet support) network connections\
+3.1 run 'nm-connection-editor' and Press "Add" in network connections\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_main.png)\
 \
-4.2 Choose Enternet\
+3.2 Choose Enternet\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_choose.png)\
 \
-4.3 Set connection name and MAC address\
+3.3 Set connection name and MAC address\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_mac.png)\
 \
-4.4 Set IP\
+3.4 Set IP\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_ip.png)\
 \
-4.5 New network connection (usb0) will create\
+3.5 New network connection (usb0) will create\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_ok.png)
 
 
-5. run setup_ecm.sh
-6. Result\
+4. run setup_ecm.sh
+5. Result\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_work.png)
+
+>Enable ECM + ACM (need 2 OTG port)
+1. boot your develop board and connect micro usb to PC
+2. copy [setup_ecm_acm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/setup_ecm_acm.sh) to develop board
+3. run setup_ecm_acm.sh
