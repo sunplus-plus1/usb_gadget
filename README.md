@@ -83,7 +83,7 @@ run below command to create vfat image file in your PC
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/mass_storage_class/pic/storage_result.png)
 
->Enable communication device class gadget
+>Enable communication device class gadget (ECM)
 1. boot your develop board and connect micro usb to PC
 2. copy [setup_ecm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/setup_ecm.sh) to develop board
 3. setup Host (untuntu 14, Windows doesn't yet support) network connections\
@@ -112,6 +112,42 @@ run below command to create vfat image file in your PC
 5. Result\
 \
 ![](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/pic/network_setting_work.png)
+
+>Enable communication device class gadget (NCM)
+1. boot your develop board and connect micro usb to PC
+2. copy [setup_ncm.sh](https://github.com/sunplus-plus1/usb_gadget/blob/master/communication_device_class/setup_ncm.sh) to develop board
+3. run setup_ncm.sh
+4. setup host (Window 10)\
+4.1 Update driver\
+![](./communication_device_class/pic/win10_network_setting_1.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_2.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_3.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_4.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_5.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_6.png)\
+\
+![](./communication_device_class/pic/win10_network_setting_7.png)\
+
+4.2 Setup ip\
+4.2.1 Click right button on Usb_Ncm device\
+![](./communication_device_class/pic/win10_network_setting_8.png)\
+\
+4.2.2 Open device and set ip\
+![](./communication_device_class/pic/win10_network_setting_9.png)\
+\
+4.2.3 Disable firewall for USB Ncm gadget\
+![](./communication_device_class/pic/win10_network_setting_10.png)\
+\
+5. setup host (Ubuntu)\
+Please refer to ECM setting\
+\
+6. Result\
+![](./communication_device_class/pic/win10_network_setting_11.png)
 
 >Enable ECM + ACM (need 2 OTG port)
 1. boot your develop board and connect micro usb to PC
