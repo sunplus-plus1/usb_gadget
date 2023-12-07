@@ -18,7 +18,7 @@ KERNEL_PATH=/lib/modules/`uname -r`/kernel
 GADGET_PATH=$KERNEL_PATH/drivers/usb/gadget
 FUNCTION_PATH=$GADGET_PATH/function
 LEGACY_PATH=$GADGET_PATH/legacy
-CONFIGFS=$KERNEL_PATH/fs/configfs/configfs.ko
+# CONFIGFS=$KERNEL_PATH/fs/configfs/configfs.ko
 COMPOSITE=$GADGET_PATH/libcomposite.ko
 U_ETHER=$FUNCTION_PATH/u_ether.ko
 USB_F_RNDIS=$FUNCTION_PATH/usb_f_rndis.ko
@@ -32,7 +32,7 @@ HOST_MAC=22:aa:8b:ef:7d:c0
 DEV_MAC=e6:76:ec:05:28:f3
 DEV_IP=192.168.10.20
 
-insmod $CONFIGFS
+# insmod $CONFIGFS
 insmod $USB_U_SERIAL
 insmod $COMPOSITE
 insmod $USB_F_SERIAL
@@ -48,7 +48,7 @@ insmod $USB_F_ECM
 echo 0 > /sys/module/sunplus_udc/parameters/dmsg
 
 mkdir -p /sys/kernel/config 
-mount -t configfs none /sys/kernel/config  
+# mount -t configfs none /sys/kernel/config  
 cd /sys/kernel/config/usb_gadget
 
 # create gadget 1/2 folder
