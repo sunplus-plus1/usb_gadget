@@ -18,18 +18,18 @@ KERNEL_PATH=/lib/modules/`uname -r`/kernel
 GADGET_PATH=$KERNEL_PATH/drivers/usb/gadget
 COMPOSITE=$GADGET_PATH/libcomposite.ko
 USB_F_MASS_STORAGE=$GADGET_PATH/function/usb_f_mass_storage.ko
-CONFIGFS=$KERNEL_PATH/fs/configfs/configfs.ko
+# CONFIGFS=$KERNEL_PATH/fs/configfs/configfs.ko
 
 MEDIUM=$1
 
-insmod $CONFIGFS
+# insmod $CONFIGFS
 insmod $COMPOSITE
 insmod $USB_F_MASS_STORAGE
 
 #disable debug message
 echo 0 > /sys/module/sunplus_udc/parameters/dmsg
 
-mount -t configfs none /sys/kernel/config
+# mount -t configfs none /sys/kernel/config
 cd /sys/kernel/config/usb_gadget
 
 mkdir g1
